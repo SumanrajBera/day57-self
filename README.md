@@ -1,4 +1,4 @@
-# Self Task: Multi Step Form
-- Today I decided to create something with a bit of everything that I have learned
-- Today I figured out the scrolling feature and transitioning between them.
-- I will continue creating this and add the necessary animation and validation tomorrow
+# Self Task: Multi-Step Form (Prototype Version)
+- Today I decided to create a prototype version of a multi-step form with a bit of everything I have learned so far.
+- I implemented the scrolling feature and smooth transitions between steps, including dynamic height adjustments.
+- Next steps: I will continue improving this form by adding input validation, plan selection logic, and enhanced animations.

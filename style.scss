@@ -37,19 +37,30 @@ main {
         gap: 1rem;
         overflow: hidden;
 
+        .fillWrapper {
+            width: 100%;
+            overflow: hidden;
+            transition: height .3s ease;
+        }
 
         .fillGrp {
             min-width: 100%;
             display: flex;
             align-items: center;
             gap: 1rem;
-            transition: all ease 1s;
-            // overflow: hidden;
+            transition: transform 1s ease;
             // transform: translateX(calc(-200% - 2rem));
 
-            .personal_details {
-                scroll-snap-align: start;
+            .step {
                 flex-shrink: 0;
+            }
+            input, textarea {
+                border: none;
+                outline: none;
+                border-radius: .2rem;
+            }
+
+            .personal_details {
                 width: 100%;
                 display: flex;
                 flex-direction: column;
@@ -70,8 +81,6 @@ main {
             }
 
             .address {
-                scroll-snap-align: start;
-                flex-shrink: 0;
                 width: 100%;
                 display: flex;
                 flex-direction: column;
@@ -94,8 +103,6 @@ main {
             }
 
             .plan {
-                scroll-snap-align: start;
-                flex-shrink: 0;
                 width: 100%;
                 display: flex;
                 flex-direction: column;
@@ -112,8 +119,6 @@ main {
             }
 
             .summary {
-                scroll-snap-align: start;
-                flex-shrink: 0;
                 width: 100%;
                 display: flex;
                 flex-direction: column;
@@ -138,6 +143,7 @@ main {
             gap: .5rem;
             button {
                 padding: .5rem 1rem;
+                cursor: pointer;
             }
         }
     }

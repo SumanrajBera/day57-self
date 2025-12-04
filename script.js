@@ -2,36 +2,58 @@ let form = document.querySelector("form")
 const scroll = document.querySelector(".fillGrp")
 const prevBtn = document.querySelector("#prev")
 const nxtBtn = document.querySelector("#next")
+const submitBtn = document.querySelector("#submit")
+const formSlide = document.querySelectorAll(".step")
+const wrapperFill = document.querySelector(".fillWrapper")
+
 let currentIndex = 0;
 
 
-form.addEventListener("submit", function(e) {
+form.addEventListener("submit", function (e) {
     e.preventDefault()
 })
 
+function handleTransition() {
+    wrapperFill.style.height = formSlide[currentIndex].offsetHeight + "px"
+    scroll.style.height = formSlide[currentIndex].offsetHeight + "px"
+    setTimeout(() => {
+        scroll.style.transform = `translateX(calc(-${(currentIndex) * 100}% - ${(currentIndex)}rem))`
+    }, 350)
+}
+
 function disableBtn() {
-    if(currentIndex === 0) {
+    if (currentIndex === 0) {
         prevBtn.disabled = true;
-    }else if(currentIndex === 3) {
+    } else if (currentIndex === 3) {
         nxtBtn.disabled = true
-    }else {
+    } else {
         prevBtn.disabled = false;
         nxtBtn.disabled = false;
     }
+
+    if (currentIndex !== 3) {
+        submitBtn.disabled = true
+    } else {
+        submitBtn.disabled = false
+    }
 }
 
-nxtBtn.addEventListener("click", function() {
-    if(currentIndex === 3) return
+function updateUI() {
+    disableBtn();
+    handleTransition();
+}
+
+
+nxtBtn.addEventListener("click", function () {
+    if (currentIndex === 3) return
     currentIndex++;
-    scroll.style.transform = `translateX(calc(-${(currentIndex)*100}% - ${(currentIndex)}rem))`
-    disableBtn()
+    updateUI()
 })
 
-prevBtn.addEventListener("click", function() {
-    if(currentIndex == 0) return
+prevBtn.addEventListener("click", function () {
+    if (currentIndex == 0) return
     currentIndex--;
-    scroll.style.transform = `translateX(calc(-${currentIndex*100}% - ${currentIndex}rem))`
-    disableBtn()
+    updateUI()
 })
 
-disableBtn()
+updateUI()
